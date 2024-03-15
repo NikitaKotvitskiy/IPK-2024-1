@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IPK-2024-1": {
+      "commandName": "Project",
+      "commandLineArgs": "-t udp -s google.com"
+    }
+  }
+}
