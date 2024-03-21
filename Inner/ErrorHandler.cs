@@ -9,7 +9,11 @@
             BadServer = 2,
             SocketError = 3,
             MessageDecodingError = 6,
-            MessageEncodingError = 7
+            MessageEncodingError = 7,
+            ConnectionIsLost = 8,
+            ConfirmationSendError = 9,
+            MessageSendError = 10,
+            MessageReceiveError = 11
         }
 
         public static void Error(ErrorType type)
@@ -30,6 +34,18 @@
                     break;
                 case ErrorType.MessageEncodingError:
                     Console.Error.WriteLine("Error: failed to encode message");
+                    break;
+                case ErrorType.ConnectionIsLost:
+                    Console.Error.WriteLine("Error: connection with server is lost");
+                    break;
+                case ErrorType.ConfirmationSendError:
+                    Console.Error.WriteLine("Error: failed to send confrmation message");
+                    break;
+                case ErrorType.MessageSendError:
+                    Console.Error.WriteLine("Error: failed to send message");
+                    break;
+                case ErrorType.MessageReceiveError:
+                    Console.Error.WriteLine("Error: faild to receive message");
                     break;
                 case ErrorType.BadError:
                 default:
