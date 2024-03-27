@@ -8,7 +8,7 @@ namespace IPK_2024_1.Messages
         {
             try
             {
-                MessageId = UdpClient.GetNewId();
+                MessageId = UdpClientLogic.GetNewId();
                 var messageIdSection = BitConverter.GetBytes((ushort)MessageId);
                 Data = new byte[messageIdSection.Length + 1];
                 var index = 0;
@@ -26,7 +26,7 @@ namespace IPK_2024_1.Messages
             try
             {
                 Data = data;
-                MessageId = BitConverter.ToUInt16(data, 1);
+                MessageId = (ushort)((data[2] << 8) | data[1]);
             }
             catch
             {

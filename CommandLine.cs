@@ -6,8 +6,6 @@
         {
             Auth,
             Join,
-            Rename,
-            Help,
             Message,
             None
         }
@@ -70,56 +68,63 @@
 
     internal abstract class CommandLine
     {
+        private const string HelpMessage = "I can't help you, sorry";
         private const string BadArguments = "Bad command arguments. Use /help to see the list of commands";
         private const string BadFormat = "Bad message format. Use /help to see the syntax of commands";
 
         public static Command GetCommand()
         {
             Command newCommand = new();
-
-            var line = Console.ReadLine();
-            var words = line?.Split([' ', '\t']);
-            if (words == null || words.Length == 0)
-                return newCommand;
-
-            switch (words[0])
+            while (true)
             {
-                case "/auth":
-                    if (words.Length != 4 || !newCommand.SetUsername(words[1]) || !newCommand.SetSecret(words[2]) ||
-                        !newCommand.SetDisplayName(words[3]))
-                    {
-                        Console.WriteLine(BadArguments);
+                var line = Console.ReadLine();
+                var words = line?.Split([' ', '\t']);
+                if (words == null || words.Length == 0)
+                    return newCommand;
+
+
+                switch (words[0])
+                {
+                    case "/auth":
+                        if (words.Length != 4 || !newCommand.SetUsername(words[1]) || !newCommand.SetSecret(words[2]) ||
+                            !newCommand.SetDisplayName(words[3]))
+                        {
+                            Console.WriteLine(BadArguments);
+                            continue;
+                        }
+                        ClientFsm.SetDisplayName(newCommand.Username);
+                        newCommand.SetCommandType(Command.CommandType.Auth);
                         return newCommand;
-                    }
-                    newCommand.SetCommandType(Command.CommandType.Auth);
-                    return newCommand;
-                case "/join":
-                    if (words.Length != 2 || !newCommand.SetChannelId(words[1]))
-                    {
-                        Console.WriteLine(BadArguments);
+                    case "/join":
+                        if (words.Length != 2 || !newCommand.SetChannelId(words[1]))
+                        {
+                            Console.WriteLine(BadArguments);
+                            continue;
+                        }
+
+                        newCommand.SetCommandType(Command.CommandType.Join);
                         return newCommand;
-                    }
-                    newCommand.SetCommandType(Command.CommandType.Join);
-                    return newCommand;
-                case "/rename":
-                    if (words.Length != 2 || !newCommand.SetDisplayName(words[1]))
-                    {
-                        Console.WriteLine(BadArguments);
+                    case "/rename":
+                        if (words.Length != 2 || !newCommand.SetDisplayName(words[1]))
+                        {
+                            Console.WriteLine(BadArguments);
+                            continue;
+                        }
+                        ClientFsm.SetDisplayName(newCommand.Username);
+                        continue;
+                    case "/help":
+                        // TODO: Write help message
+                        Console.WriteLine(HelpMessage);
+                        continue;
+                    default:
+                        if (line != null && line[0] != '/' && !newCommand.SetMessageContent(line))
+                        {
+                            Console.WriteLine(BadFormat);
+                            continue;
+                        }
+                        newCommand.SetCommandType(Command.CommandType.Message);
                         return newCommand;
-                    }
-                    newCommand.SetCommandType(Command.CommandType.Rename);
-                    return newCommand;
-                case "/help":
-                    newCommand.SetCommandType(Command.CommandType.Help);
-                    return newCommand;
-                default:
-                    if (line != null && line[0] != '/' && !newCommand.SetMessageContent(line))
-                    {
-                        Console.WriteLine(BadFormat);
-                        return newCommand;
-                    }
-                    newCommand.SetCommandType(Command.CommandType.Message);
-                    return newCommand;
+                }
             }
         }
     }

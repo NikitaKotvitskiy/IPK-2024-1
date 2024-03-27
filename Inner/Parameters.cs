@@ -11,11 +11,14 @@ internal abstract class Parameters
     }
 
     public static ProtocolType? Mode;
+
+    public static object PortLock = new object();
     public static ushort Port = 4567;
+    
     public static ushort Timeout = 250;
     public static short MaxRetransmissions = 3;
     public static bool Help;
-    public static IPAddress? Ip;
+    public static IPAddress Ip = null!;
 
     public static void ProcessCla(string?[] args)
     {
@@ -44,7 +47,7 @@ internal abstract class Parameters
                     arg = GetNext();
                     if (string.IsNullOrEmpty(arg))
                         ErrorHandler.Error(ErrorHandler.ErrorType.ClaErr);
-                    else if (!IPAddress.TryParse(arg, out Ip))
+                    else if (!IPAddress.TryParse(arg, out Ip!))
                         try
                         {
                             var addresses = Dns.GetHostAddresses(arg);

@@ -24,10 +24,16 @@ namespace IPK_2024_1.Messages
 
         public override void DecodeMessage(byte[] data)
         {
+            Console.Write("\t");
+            foreach (var b in data)
+                Console.Write($"{b:X2} ");
+            Console.WriteLine();
+            
             try
             {
                 Data = data;
-                RefMessageId = BitConverter.ToUInt16(Data, 1);
+                RefMessageId = (ushort)((data[2] << 8) | data[1]);
+                Console.WriteLine($"\t{RefMessageId}");
             }
             catch
             {

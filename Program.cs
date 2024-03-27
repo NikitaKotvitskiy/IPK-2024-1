@@ -11,7 +11,7 @@ namespace IPK_2024_1
             switch (Parameters.Mode)
             {
                 case Parameters.ProtocolType.Udp:
-                    UdpClient.Start();
+                    UdpClientLogic.Start();
                     break;
                 case Parameters.ProtocolType.Tcp:
                     TcpClient.Start();

@@ -12,7 +12,7 @@ namespace IPK_2024_1.Messages
                 Username = username;
                 DisplayName = displayName;
                 Secret = secret;
-                MessageId = UdpClient.GetNewId();
+                MessageId = UdpClientLogic.GetNewId();
 
                 var messageIdSection = BitConverter.GetBytes((ushort)MessageId);
                 var usernameSection = Encoding.ASCII.GetBytes(username);
@@ -49,7 +49,7 @@ namespace IPK_2024_1.Messages
                 Data = data;
                 var startPosition = 1;
 
-                MessageId = BitConverter.ToUInt16(data, startPosition);
+                MessageId = (ushort)((data[startPosition + 1] << 8) | data[startPosition]);
                 startPosition += 2;
 
                 Username = Encoding.ASCII.GetString(data, startPosition, DefineStringLength(data, ref startPosition));

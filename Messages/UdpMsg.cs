@@ -11,7 +11,7 @@ namespace IPK_2024_1.Messages
             {
                 DisplayName = displayName;
                 MessageContent = messageContent;
-                MessageId = UdpClient.GetNewId();
+                MessageId = UdpClientLogic.GetNewId();
 
                 var messageIdSection = BitConverter.GetBytes((ushort)MessageId);
                 var displayNameSection = Encoding.ASCII.GetBytes(displayName);
@@ -45,7 +45,7 @@ namespace IPK_2024_1.Messages
                 Data = data;
                 var startPosition = 1;
 
-                MessageId = BitConverter.ToUInt16(data, startPosition);
+                MessageId = (ushort)((ushort)(data[startPosition + 1] << 8) | data[startPosition]);
                 startPosition += 2;
 
                 DisplayName =

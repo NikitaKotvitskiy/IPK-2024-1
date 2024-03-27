@@ -4,7 +4,7 @@
     {
         public byte[]? Data { get; protected set; }
 
-        public ushort? MessageId { get; protected set; }
+        public ushort MessageId { get; protected set; }
         public ushort? RefMessageId { get; protected set; }
         public string? Username { get; protected set; }
         public string? ChannelId { get; protected set; }
@@ -33,8 +33,7 @@
                 foreach (var b in Data)
                     Console.Write($"{b:X2} ");
             Console.WriteLine();
-            if (MessageId != null)
-                Console.WriteLine($"Message ID: {MessageId}");
+            Console.WriteLine($"Message ID: {MessageId}");
             if (RefMessageId != null)
                 Console.WriteLine($"Reference message ID: {RefMessageId}");
             if (Username != null)
