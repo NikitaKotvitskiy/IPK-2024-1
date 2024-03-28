@@ -1,4 +1,13 @@
-﻿namespace IPK_2024_1.Messages
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                  TcpAuth.cs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: This file contains class for TcpAuth message
+ *                  Last change: 27.03.23
+ *****************************************************************************/
+
+namespace IPK_2024_1.Messages
 {
     internal class TcpAuth : TcpMessage
     {
@@ -9,6 +18,7 @@
 
         public override void DecodeMessage(string mesString)
         {
+            // Server never sends auth message
         }
     }
 }

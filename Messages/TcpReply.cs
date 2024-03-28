@@ -1,4 +1,11 @@
-﻿using System.Text;
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                  TcpReply.cs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: This file contains class for TcpReply message
+ *                  Last change: 27.03.23
+ *****************************************************************************/
 
 namespace IPK_2024_1.Messages
 {
@@ -15,9 +22,6 @@ namespace IPK_2024_1.Messages
             var words = mesString.Split([' ']);
 
             Result = words[1] == "OK"; MessageContent = string.Empty;
-            //for (var i = 3; i < words.Length - 1; i++)
-            //    MessageContent += words[i] + " ";
-            //MessageContent += words[words.Length - 1].Substring(0, words[words.Length - 1].Length - 2);
             for (var i = 3; i < words.Length - 1; i++)
                 MessageContent += words[i] + " ";
             MessageContent += words[words.Length - 1];

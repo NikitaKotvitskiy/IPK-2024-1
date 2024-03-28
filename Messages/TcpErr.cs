@@ -1,9 +1,13 @@
-﻿using IPK_2024_1.Inner;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                  TcpErrcs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: This file contains class for TcpErr message
+ *                  Last change: 27.03.23
+ *****************************************************************************/
+
+using IPK_2024_1.Inner;
 
 namespace IPK_2024_1.Messages
 {

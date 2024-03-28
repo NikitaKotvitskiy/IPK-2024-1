@@ -1,4 +1,11 @@
-﻿using System.Text;
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                  TcpJoin.cs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: This file contains class for TcpJoin message
+ *                  Last change: 27.03.23
+ *****************************************************************************/
 
 namespace IPK_2024_1.Messages
 {
@@ -11,6 +18,7 @@ namespace IPK_2024_1.Messages
 
         public override void DecodeMessage(string mesString)
         {
+            // Server never sends join message
         }
     }
 }
