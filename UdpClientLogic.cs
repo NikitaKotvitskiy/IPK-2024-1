@@ -33,7 +33,7 @@ internal abstract class UdpClientLogic
                 Environment.Exit(0);
             };
             
-            _client = new UdpClient(12345);
+            _client = new UdpClient(0, AddressFamily.InterNetwork);
             var receiveThread = new Thread(Receiver);
             receiveThread.Start();
 
@@ -135,14 +135,9 @@ internal abstract class UdpClientLogic
 
             while (true)
             {   
-                Console.WriteLine("Wait for a message");
                 var receivedData = _client.Receive(ref remoteEndPoint);
-                Console.WriteLine($"Got a message from {remoteEndPoint.Port}");
                 if (remoteEndPoint.Port != Parameters.Port)
-                {
-                    Console.WriteLine("Port has been changed");
                     lock (Parameters.PortLock) Parameters.Port = (ushort)remoteEndPoint.Port;
-                }
                 
                 ProcessMessageFromServer(receivedData);
             }
@@ -158,7 +153,6 @@ internal abstract class UdpClientLogic
         switch (messageData[0])
         {
             case 0x00:
-                Console.WriteLine("Confirmation message was received");
                 var confirmationMessage = new UdpConfirm();
                 confirmationMessage.DecodeMessage(messageData);
                 var refId = confirmationMessage.RefMessageId;
@@ -170,7 +164,6 @@ internal abstract class UdpClientLogic
                     }
                 break;
             case 0x01:
-                Console.WriteLine("Reply message was received");
                 var replyMessage = new UdpReply();
                 replyMessage.DecodeMessage(messageData);
                 var confToReplyMessage = new UdpConfirm();

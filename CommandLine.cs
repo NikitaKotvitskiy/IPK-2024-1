@@ -68,7 +68,11 @@
 
     internal abstract class CommandLine
     {
-        private const string HelpMessage = "I can't help you, sorry";
+        private const string HelpMessage =  "You can use the following commands:\n" +
+                                            "\t/auth {username} {secret} {displayName}\n" +
+                                            "\t/join {channelId}\n" +
+                                            "\t/rename {displayName}\n" +
+                                            "\t/{msg}";
         private const string BadArguments = "Bad command arguments. Use /help to see the list of commands";
         private const string BadFormat = "Bad message format. Use /help to see the syntax of commands";
 
@@ -92,7 +96,7 @@
                             Console.WriteLine(BadArguments);
                             continue;
                         }
-                        ClientFsm.SetDisplayName(newCommand.Username);
+                        ClientFsm.SetDisplayName(newCommand.DisplayName);
                         newCommand.SetCommandType(Command.CommandType.Auth);
                         return newCommand;
                     case "/join":
@@ -110,14 +114,13 @@
                             Console.WriteLine(BadArguments);
                             continue;
                         }
-                        ClientFsm.SetDisplayName(newCommand.Username);
+                        ClientFsm.SetDisplayName(newCommand.DisplayName);
                         continue;
                     case "/help":
-                        // TODO: Write help message
                         Console.WriteLine(HelpMessage);
                         continue;
                     default:
-                        if (line != null && line[0] != '/' && !newCommand.SetMessageContent(line))
+                        if (line != null && line != string.Empty && line[0] != '/' && !newCommand.SetMessageContent(line))
                         {
                             Console.WriteLine(BadFormat);
                             continue;

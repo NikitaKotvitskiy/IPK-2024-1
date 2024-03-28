@@ -6,6 +6,7 @@
         <RootNamespace>IPK_2024_1</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
 
 </Project>

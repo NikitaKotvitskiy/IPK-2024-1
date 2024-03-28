@@ -4,7 +4,7 @@ namespace IPK_2024_1
 {
     internal abstract class CheckFields
     {
-        private const string NonZeroPattern = @"^[A-Za-z0-9\-]+$";
+        private const string NonZeroPattern = @"^[A-Za-z0-9\-\.]+$";
         private const string PrintablePattern = @"^[\x21-\x7E]+$";
         private const string PrintableWithSpacePattern = @"^[\x20-\x7E]+$";
 

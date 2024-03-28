@@ -13,7 +13,8 @@
             ConnectionIsLost = 8,
             ConfirmationSendError = 9,
             MessageSendError = 10,
-            MessageReceiveError = 11
+            MessageReceiveError = 11,
+            TcpDecodingError = 12
         }
 
         public static void Error(ErrorType type)
@@ -46,6 +47,9 @@
                     break;
                 case ErrorType.MessageReceiveError:
                     Console.Error.WriteLine("Error: faild to receive message");
+                    break;
+                case ErrorType.TcpDecodingError:
+                    Console.Error.WriteLine("Error: failed to decode TCP message");
                     break;
                 case ErrorType.BadError:
                 default:

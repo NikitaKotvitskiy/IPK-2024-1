@@ -14,7 +14,7 @@ namespace IPK_2024_1
                     UdpClientLogic.Start();
                     break;
                 case Parameters.ProtocolType.Tcp:
-                    TcpClient.Start();
+                    TcpClientLogic.Start();
                     break;
                 default:
                     ErrorHandler.Error(ErrorHandler.ErrorType.BadError);
