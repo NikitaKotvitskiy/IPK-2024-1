@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+ipk24chat-client*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
