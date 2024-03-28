@@ -13,7 +13,7 @@ namespace IPK_2024_1.Messages
     {
         public void EncodeMessage(string username, string displayName, string secret)
         {
-            Message = ($"{ContentAuth} {username} {AsStr} {displayName} {UsingStr} {secret}\r\n");
+            Message = ($"{ContentAuth} {username} {AsStr} {displayName} {UsingStr} {secret}\r");
         }
 
         public override void DecodeMessage(string mesString)

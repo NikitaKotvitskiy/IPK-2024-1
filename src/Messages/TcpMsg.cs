@@ -13,7 +13,7 @@ namespace IPK_2024_1.Messages
     {
         public void EncodeMessage(string displayName, string messageContent)
         {
-            Message = new string($"{ContentMessage} {displayName} {IsStr} {messageContent}\r\n");
+            Message = new string($"{ContentMessage} {displayName} {IsStr} {messageContent}\r");
         }
 
         public override void DecodeMessage(string mesString)

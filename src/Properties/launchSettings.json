@@ -2,7 +2,7 @@
   "profiles": {
     "IPK-2024-1": {
       "commandName": "Project",
-      "commandLineArgs": "-t udp -s 127.0.0.1"
+      "commandLineArgs": "-t tcp -s vitapavlik.cz"
     }
   }
 }

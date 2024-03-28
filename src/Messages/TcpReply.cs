@@ -14,7 +14,7 @@ namespace IPK_2024_1.Messages
         public void EncodeMessage(bool result, string messageContent)
         {
             var res = result ? "OK" : "NOK";
-            Message = new string($"{ContentReply} {res} {IsStr} {messageContent}\r\n");
+            Message = new string($"{ContentReply} {res} {IsStr} {messageContent}\r");
         }
 
         public override void DecodeMessage(string mesString)

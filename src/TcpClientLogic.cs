@@ -34,7 +34,6 @@ internal abstract class TcpClientLogic
                 var bye = new TcpBye();
                 bye.EncodeMessage();
                 SendMessage(bye.Message);
-                _client.Close();
                 Environment.Exit(0);
             };
 

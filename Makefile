@@ -1,6 +1,6 @@
 PROJECT_NAME = IPK-2024-1
 
-PROJECT_FILE = $(PROJECT_NAME)/$(PROJECT_NAME).csproj
+PROJECT_FILE = ./src/$(PROJECT_NAME).csproj
 
 BUILD_FLAGS = --configuration Release
 
