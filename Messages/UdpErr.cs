@@ -1,4 +1,13 @@
-﻿using IPK_2024_1.Inner;
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                  UdpErr.cs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: This file contains class for UdpErr message
+ *                  Last change: 27.03.23
+ *****************************************************************************/
+
+using IPK_2024_1.Inner;
 using System.Text;
 
 namespace IPK_2024_1.Messages

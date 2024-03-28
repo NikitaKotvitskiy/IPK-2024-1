@@ -1,4 +1,13 @@
-﻿using System.Text;
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                  UdpAuth.cs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: This file contains class for UdpAuth message
+ *                  Last change: 27.03.23
+ *****************************************************************************/
+
+using System.Text;
 using IPK_2024_1.Inner;
 
 namespace IPK_2024_1.Messages
@@ -44,22 +53,7 @@ namespace IPK_2024_1.Messages
 
         public override void DecodeMessage(byte[] data)
         {
-            try
-            {
-                Data = data;
-                var startPosition = 1;
-
-                MessageId = (ushort)((data[startPosition + 1] << 8) | data[startPosition]);
-                startPosition += 2;
-
-                Username = Encoding.ASCII.GetString(data, startPosition, DefineStringLength(data, ref startPosition));
-                DisplayName = Encoding.ASCII.GetString(data, startPosition, DefineStringLength(data, ref startPosition));
-                Secret = Encoding.ASCII.GetString(data, startPosition, DefineStringLength(data, ref startPosition));
-            }
-            catch
-            {
-                ErrorHandler.Error(ErrorHandler.ErrorType.MessageDecodingError);
-            }
+            // There is no need to decode the auth message, because server never sends it
         }
     }
 }

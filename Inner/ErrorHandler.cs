@@ -1,4 +1,14 @@
-﻿namespace IPK_2024_1.Inner
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                ErrorHandler.cs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: Simple error handler with termination 
+ *                               functionality
+ *                  Last change: 27.03.23
+ *****************************************************************************/
+
+namespace IPK_2024_1.Inner
 {
     internal static class ErrorHandler
     {

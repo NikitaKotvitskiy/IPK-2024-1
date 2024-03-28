@@ -1,4 +1,13 @@
-﻿using System.Text.RegularExpressions;
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                CheckFields.cs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: This file contains regexes for format checking
+ *                  Last change: 14.03.23
+ *****************************************************************************/
+
+using System.Text.RegularExpressions;
 
 namespace IPK_2024_1
 {

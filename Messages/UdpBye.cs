@@ -1,4 +1,13 @@
-﻿using IPK_2024_1.Inner;
+﻿/******************************************************************************
+ *                                  IPK-2024-1
+ *                                  UdpBye.cs
+ * 
+ *                  Authors: Nikita Kotvitskiy (xkotvi01)
+ *                  Description: This file contains class for UdpBye message
+ *                  Last change: 27.03.23
+ *****************************************************************************/
+
+using IPK_2024_1.Inner;
 
 namespace IPK_2024_1.Messages
 {
